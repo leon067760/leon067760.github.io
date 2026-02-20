@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>獅諾物流</title>
+
+  <!-- 線上草書書法 Web 字體 -->
+  <link href="https://fonts.cdnfonts.com/css/chinese-calligraphy" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Chinese Calligraphy', cursive, 'Noto Sans TC', sans-serif;
+      background-color: #f1f8fd;  /* 淺藍色背景 */
+      color: #333;
+    }
+
+    /* 頁首容器 */
+    .header {
+      display: flex;
+      align-items: center; /* 文字與LOGO垂直置中 */
+      padding: 10px 20px;
+      background-color: #3A7CA5; /* 基本藍色 */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* LOGO 圖片 */
+    .logo {
+      width: 90px;
+      height: auto;
+      margin-right: 5px; /* 文字靠近LOGO */
+      display: block;    /* 避免圖片多餘空白影響對齊 */
+    }
+
+    /* LOGO旁邊文字 */
+    .brand-name {
+      display: inline-block; 
+      vertical-align: middle; 
+      font-size: 40px;
+      font-weight: 900;
+      color: #F2E7AA; /* 修改為金色字體 */
+      text-shadow: 
+        2px 2px 2px black,
+        4px 4px 4px rgba(0,0,0,0.7),
+        6px 6px 6px rgba(0,0,0,0.5); /* 明顯陰影 */
+      letter-spacing: 0.2px;
+      line-height: 1;          
+      position: relative;
+      top: 2px;
+    }
+
+    /* 導航欄 */
+    .nav-bar {
+      display: flex;
+      justify-content: center;
+      background-color: #2C5D7D; /* 更深的藍色來區分導航 */
+      padding: 10px;
+    }
+
+    .nav-item {
+      margin: 0 20px;
+      font-size: 18px;
+    }
+
+    .nav-item a {
+      text-decoration: none;
+      color: #fff;
+      transition: color 0.3s;
+    }
+
+    .nav-item a:hover {
+      color: #FFD700;
+    }
+
+    /* 內容區域 */
+    .main-content {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #fff;
+      margin: 20px auto;
+      max-width: 1200px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .main-content h2 {
+      font-size: 36px;
+      color: #333;
+    }
+
+    .main-content p {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.6;
+      margin-top: 20px;
+    }
+
+    .service-list {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+
+    .service-item {
+      width: 30%;
+      text-align: center;
+      background-color: #f2f2f2;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* 圖片大小調整 */
+    .service-item img {
+      max-width: 30%; /* 設定圖片最大寬度為容器的 80% */
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .service-item h3 {
+      font-size: 24px;
+      color: #333;
+    }
+
+    .contact-section {
+      background-color: #3A7CA5; /* 和頁首一致的藍色 */
+      color: #fff;
+      padding: 50px 20px;
+      text-align: center;
+    }
+
+    .contact-section h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+
+    .contact-section p {
+      font-size: 18px;
+      line-height: 1.8;
+      margin: 10px 0;
+    }
+
+    /* 修改為清晰、無襯線字體 (Verdana) */
+    .contact-section a {
+      font-family: Verdana, Arial, Helvetica, sans-serif; /* 修改為更清晰的字體 */
+      font-size: 20px;
+      color: #FFD700; /* 高亮顯示 Email */
+      text-decoration: none;
+      font-weight: 600; /* 增加字體粗細 */
+      transition: color 0.3s;
+    }
+
+    .contact-section a:hover {
+      color: #fff;
+    }
+
+    .contact-section span {
+      font-family: Verdana, Arial, Helvetica, sans-serif; /* 為電話也設置清晰字體 */
+      font-size: 20px;
+    }
+
+    /* 適應手機螢幕 */
+    @media (max-width: 768px) {
+      .service-list {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .service-item {
+        width: 80%;
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .brand-name {
+        font-size: 30px;
+      }
+      .logo {
+        width: 60px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頁首 -->
+  <header class="header">
+    <img src="logo.webp" alt="獅諾物流 LOGO" class="logo">
+    <span class="brand-name">獅諾物流</span>
+  </header>
+
+  <!-- 導航欄 -->
+  <nav class="nav-bar">
+    <div class="nav-item"><a href="#">首頁</a></div>
+    <div class="nav-item"><a href="#">服務項目</a></div>
+    <div class="nav-item"><a href="#">關於我們</a></div>
+    <div class="nav-item"><a href="#">聯絡我們</a></div>
+  </nav>
+
+  <!-- 主要內容 -->
+  <section class="main-content">
+    <h2>歡迎來到獅諾物流</h2>
+    <p>我們提供專業且高效的物流服務，確保您的貨物準時且安全到達目的地。我們擁有多年的經驗和先進的運輸系統，讓您無後顧之憂。</p>
+    <div class="service-list">
+      <div class="service-item">
+        <img src="delivery-truck.png?text=貨物運送" alt="貨物運送">
+        <h3>貨物運送</h3>
+        <p>我們提供國內外的物流運送服務，保證準時到達。</p>
+      </div>
+      <div class="service-item">
+        <img src="warehouse.png?text=倉儲管理" alt="倉儲管理">
+        <h3>倉儲管理</h3>
+        <p>專業的倉儲管理系統，讓您的貨物得到妥善儲存和管理。</p>
+      </div>
+      <!-- 修改這部分 -->
+      <div class="service-item">
+        <img src="cupboard.png?text=家具組裝" alt="家具組裝">
+        <h3>家具組裝</h3>
+        <p>我們提供專業的家具組裝服務，確保您的家具迅速並正確地完成組裝。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 聯絡我們 -->
+  <section class="contact-section">
+    <h2>聯絡我們</h2>
+    <p>如果您有任何疑問或需要服務，請隨時聯絡我們。</p>
+    <p>Email: <a href="mailto:info@lionmoving.com.tw">info@lionmoving.com.tw</a></p>
+    <p>電話: <span>0922-980-235</span></p>
+  </section>
+
+</body>
+</html>
