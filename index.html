@@ -20,7 +20,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px 40px;
-      background-color: #0D1B2A; /* 深藍色 */
+      background-color: #0D1B2A;
       box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
@@ -29,8 +29,10 @@
       align-items: center;
     }
 
+    /* ✅ 修改後的 LOGO 設定 */
     .logo {
-      width: 360px;
+      width: 100%;
+      max-width: 360px;
       height: auto;
       margin-right: 10px;
     }
@@ -38,7 +40,7 @@
     .brand-name {
       font-size: 40px;
       font-weight: 900;
-      color: #C9A227; /* 金色 */
+      color: #C9A227;
       letter-spacing: 2px;
       text-shadow: 
         2px 2px 2px rgba(0,0,0,0.8),
@@ -58,7 +60,7 @@
     }
 
     .nav-bar a:hover {
-      color: #C9A227; /* 金色 */
+      color: #C9A227;
     }
 
     .slider {
@@ -152,7 +154,7 @@
     }
 
     .contact-section {
-      background-color: #0D1B2A; /* 深藍色 */
+      background-color: #0D1B2A;
       color: #ffffff;
       padding: 50px 60px 50px 20px;
       text-align: right;
@@ -160,7 +162,7 @@
 
     .contact-section a {
       font-size: 20px;
-      color: #C9A227; /* 金色 */
+      color: #C9A227;
       text-decoration: none;
       font-weight: 600;
     }
@@ -199,12 +201,10 @@
       }
     }
 
+    /* ✅ 保留 600px 媒體查詢，但已移除 logo 80px 設定 */
     @media (max-width: 600px) {
       .brand-name {
         font-size: 26px;
-      }
-      .logo {
-        width: 80px;
       }
     }
   </style>
