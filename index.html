@@ -158,13 +158,24 @@
       position: relative;
       overflow: hidden;
       border: 2px solid transparent;
+
+      /* 新增 flex 排版：圖片+標題同一行，說明在下面 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    /* Hover 高級效果 */
     .service-link:hover .service-item {
       transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
       box-shadow: 0 16px 28px rgba(0,0,0,0.2);
       border: 2px solid #C9A227;
+    }
+
+    .service-item-header {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 15px;
     }
 
     .service-item img {
@@ -180,10 +191,8 @@
     .service-item h3 {
       font-size: 22px;
       color: #333;
-      margin-top: 10px;
+      margin: 0;
       transition: color 0.4s ease;
-      position: relative;
-      z-index: 1;
     }
 
     .service-link:hover h3 {
@@ -209,7 +218,7 @@
     .service-item p {
       font-size: 16px;
       color: #666;
-      margin-top: 10px;
+      margin: 0;
       line-height: 1.6;
     }
 
@@ -231,7 +240,6 @@
       font-size: 20px;
     }
 
-    /* 新增：Line文字與圖片同列 */
     .line-contact {
       display: flex;
       align-items: center;
@@ -273,6 +281,11 @@
       .brand-name {
         font-size: 26px;
       }
+
+      .service-item-header {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
@@ -312,40 +325,60 @@
 
     <a href="index.html" class="service-link">
       <div class="service-item">
-        <img src="delivery-truck.webp">
-        <h3>貨物運送</h3>
+        <div class="service-item-header">
+          <img src="delivery-truck.webp">
+          <h3>貨物運送</h3>
+        </div>
         <p>提供安全快速的物流配送服務，確保貨物準時送達。</p>
       </div>
     </a>
 
     <a href="index.html" class="service-link">
       <div class="service-item">
-        <img src="car.webp">
-        <h3>拆裝貨櫃</h3>
+        <div class="service-item-header">
+          <img src="car.webp">
+          <h3>拆裝貨櫃</h3>
+        </div>
         <p>專業團隊協助貨櫃裝卸與貨物整理。</p>
       </div>
     </a>
 
     <a href="index.html" class="service-link">
       <div class="service-item">
-        <img src="warehouse.webp">
-        <h3>貨物寄存</h3>
+        <div class="service-item-header">
+          <img src="warehouse.webp">
+          <h3>貨物寄存</h3>
+        </div>
         <p>提供安全可靠的倉儲空間，滿足各種存放需求。</p>
       </div>
     </a>
 
     <a href="index.html" class="service-link">
       <div class="service-item">
-        <img src="product.webp">
-        <h3>個人空間</h3>
+        <div class="service-item-header">
+          <img src="product.webp">
+          <h3>個人空間</h3>
+        </div>
         <p>彈性個人倉儲空間，讓物品收納更方便。</p>
       </div>
     </a>
 
     <a href="index.html" class="service-link">
       <div class="service-item">
-        <img src="cupboard.webp">
-        <h3>家具組裝</h3>
+        <div class="service-item-header">
+          <img src="cupboard.webp">
+          <h3>家具組裝</h3>
+        </div>
+        <p>提供家具拆裝與組裝服務，讓搬運更輕鬆。</p>
+      </div>
+    </a>
+
+    <a href="index.html" class="service-link">
+      <div class="service-item">
+        <div class="service-item-header">
+          <img src="mall.webp">
+          <h3>商業空間</h3>
+        </div>
         <p>提供家具拆裝與組裝服務，讓搬運更輕鬆。</p>
       </div>
     </a>
@@ -355,9 +388,9 @@
 
 <section class="contact-section">
   <p>238 新北市樹林區佳園路三段103-1號</p>
-  <p>電話: <span>(02)8295-5511</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 傳真: <span>(02)8295-1166</span></p>
-  
-  <!-- Line 文字與圖片同列 -->
+  <p>電話: <span>(02)8295-5511</span></p>
+  <p>傳真: <span>(02)8295-1166</span></p>
+
   <div class="line-contact">
     <p>官方Line: <a href="https://lin.ee/I6mCQkT" target="_blank">點擊詢問</a></p>
     <img src="LineLionMoving.webp" style="max-width:100px;">
