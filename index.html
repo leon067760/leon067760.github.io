@@ -169,13 +169,6 @@
       border: 2px solid #C9A227;
     }
 
-    /* 手機觸控浮動效果 */
-    .service-link.touch-active .service-item {
-      transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
-      box-shadow: 0 16px 28px rgba(0,0,0,0.2);
-      border: 2px solid #C9A227;
-    }
-
     .service-item-header {
       display: flex;
       align-items: center;
@@ -193,10 +186,6 @@
       transform: scale(1.2) rotate(10deg);
     }
 
-    .service-link.touch-active img {
-      transform: scale(1.2) rotate(10deg);
-    }
-
     .service-item h3 {
       font-size: 22px;
       color: #333;
@@ -205,10 +194,6 @@
     }
 
     .service-link:hover h3 {
-      color: #C9A227;
-    }
-
-    .service-link.touch-active h3 {
       color: #C9A227;
     }
 
@@ -225,10 +210,6 @@
     }
 
     .service-link:hover .service-item::before {
-      left: 120%;
-    }
-
-    .service-link.touch-active .service-item::before {
       left: 120%;
     }
 
@@ -452,18 +433,37 @@ slider.addEventListener('mouseleave', () => {
   interval = setInterval(nextSlide, 4000);
 });
 
-/* 手機觸控浮動效果 */
+/* 手機3D觸控效果 */
 
 const serviceLinks = document.querySelectorAll('.service-link');
 
 serviceLinks.forEach(link => {
 
-  link.addEventListener('touchstart', () => {
-    link.classList.add('touch-active');
+  const card = link.querySelector('.service-item');
+
+  link.addEventListener('touchmove', (e) => {
+
+    const touch = e.touches[0];
+    const rect = card.getBoundingClientRect();
+
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = -(y - centerY) / 20;
+    const rotateY = (x - centerX) / 20;
+
+    card.style.transform =
+      `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
   });
 
   link.addEventListener('touchend', () => {
-    link.classList.remove('touch-active');
+
+    card.style.transform = "";
+
   });
 
 });
