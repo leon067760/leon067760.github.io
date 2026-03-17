@@ -132,14 +132,13 @@
       margin-top: 20px;
     }
 
-    /* 直列服務項目 */
     .service-list {
       display: flex;
       flex-direction: column;
       align-items: center;
       margin-top: 50px;
       gap: 30px;
-      perspective: 1000px; /* 3D 效果 */
+      perspective: 1000px;
     }
 
     .service-link {
@@ -159,13 +158,19 @@
       overflow: hidden;
       border: 2px solid transparent;
 
-      /* 新增 flex 排版：圖片+標題同一行，說明在下面 */
       display: flex;
       flex-direction: column;
       align-items: center;
     }
 
     .service-link:hover .service-item {
+      transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
+      box-shadow: 0 16px 28px rgba(0,0,0,0.2);
+      border: 2px solid #C9A227;
+    }
+
+    /* 手機觸控浮動效果 */
+    .service-link.touch-active .service-item {
       transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
       box-shadow: 0 16px 28px rgba(0,0,0,0.2);
       border: 2px solid #C9A227;
@@ -188,6 +193,10 @@
       transform: scale(1.2) rotate(10deg);
     }
 
+    .service-link.touch-active img {
+      transform: scale(1.2) rotate(10deg);
+    }
+
     .service-item h3 {
       font-size: 22px;
       color: #333;
@@ -196,6 +205,10 @@
     }
 
     .service-link:hover h3 {
+      color: #C9A227;
+    }
+
+    .service-link.touch-active h3 {
       color: #C9A227;
     }
 
@@ -212,6 +225,10 @@
     }
 
     .service-link:hover .service-item::before {
+      left: 120%;
+    }
+
+    .service-link.touch-active .service-item::before {
       left: 120%;
     }
 
@@ -433,6 +450,22 @@ slider.addEventListener('mouseenter', () => {
 
 slider.addEventListener('mouseleave', () => {
   interval = setInterval(nextSlide, 4000);
+});
+
+/* 手機觸控浮動效果 */
+
+const serviceLinks = document.querySelectorAll('.service-link');
+
+serviceLinks.forEach(link => {
+
+  link.addEventListener('touchstart', () => {
+    link.classList.add('touch-active');
+  });
+
+  link.addEventListener('touchend', () => {
+    link.classList.remove('touch-active');
+  });
+
 });
 </script>
 
