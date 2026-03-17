@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>關於我們 - 獅諾物流</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* 全域樣式 */
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #f1f8fd;
+      color: #333;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      background-color: #0D1B2A;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+    }
+
+    .nav-bar {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .nav-bar a:hover {
+      color: #C9A227;
+    }
+
+    /* 主內容區 */
+    .main-content {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #fff;
+      margin: 40px auto;
+      max-width: 1200px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .main-content h1 {
+      font-size: 36px;
+      color: #0D1B2A;
+      margin-bottom: 30px;
+    }
+
+    .main-content h2 {
+      font-size: 28px;
+      color: #0D1B2A;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .main-content p {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .milestone {
+      background-color: #f9f9f9;
+      padding: 20px;
+      border-left: 4px solid #C9A227;
+      margin-bottom: 15px;
+      text-align: left;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Footer 與首頁一致 */
+    .contact-section {
+      background-color: #0D1B2A;
+      color: #ffffff;
+      padding: 50px 60px 50px 20px;
+      text-align: right;
+    }
+
+    .contact-section a {
+      font-size: 20px;
+      color: #C9A227;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-section span {
+      font-size: 20px;
+    }
+
+    .line-contact {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .nav-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .contact-section {
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .line-contact {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .main-content h1 {
+        font-size: 28px;
+      }
+      .main-content h2 {
+        font-size: 22px;
+      }
+      .milestone {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="brand">
+    <a href="index.html">
+      <img src="logo.webp" alt="獅諾物流 LOGO" class="logo">
+    </a>
+  </div>
+  <nav class="nav-bar">
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於我們</a>
+    <a href="service.html">服務項目</a>
+    <a href="contact.html">聯絡我們</a>
+  </nav>
+</header>
+
+<section class="main-content">
+  <h1>關於我們</h1>
+  <p>獅諾物流自創立以來，致力於提供安全、可靠且高效的物流解決方案。我們的使命是確保每一件貨物準時抵達，並為客戶創造最大的價值。我們擁有專業的團隊與先進的運輸系統，持續優化服務品質。</p>
+
+  <h2>我們的理念</h2>
+  <p>以客戶為中心，追求卓越與創新。我們相信物流不只是運送貨物，更是連結信任與承諾的橋樑。我們堅持透明、高效且安全的作業流程，確保每位客戶安心無憂。</p>
+
+  <h2>公司里程碑</h2>
+  <div class="milestone">
+    <strong>2010</strong> - 公司成立，提供本地物流服務。
+  </div>
+  <div class="milestone">
+    <strong>2015</strong> - 引進自動化倉儲系統，提高運輸效率。
+  </div>
+  <div class="milestone">
+    <strong>2020</strong> - 擴展至跨境物流，服務範圍擴大。
+  </div>
+  <div class="milestone">
+    <strong>2025</strong> - 推出個人倉儲與商業空間解決方案。
+  </div>
+</section>
+
+<section class="contact-section">
+  <p>238 新北市樹林區佳園路三段103-1號</p>
+  <p>電話: <span>(02)8295-5511</span></p>
+  <p>傳真: <span>(02)8295-1166</span></p>
+
+  <div class="line-contact">
+    <p>官方Line: <a href="https://lin.ee/I6mCQkT" target="_blank">點擊詢問</a></p>
+    <img src="LineLionMoving.webp" style="max-width:100px;">
+  </div>
+
+  <br>
+  <p>© 2026 獅諾物流 版權所有</p>
+</section>
+
+</body>
+</html>

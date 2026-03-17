@@ -75,6 +75,7 @@
       height: 100%;
     }
 
+    /* 輪播淡入淡出效果 */
     .slide {
       position: absolute;
       width: 100%;
@@ -82,10 +83,12 @@
       object-fit: cover;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      z-index: 0;
     }
 
     .slide.active {
       opacity: 1;
+      z-index: 1;
     }
 
     .prev, .next {
@@ -292,15 +295,17 @@
 
 <header class="header">
   <div class="brand">
-    <img src="logo.webp" alt="獅諾物流 LOGO" class="logo">
+    <a href="index.html">
+      <img src="logo.webp" alt="獅諾物流 LOGO" class="logo">
+    </a>
     <span class="brand-name"></span>
   </div>
 
   <nav class="nav-bar">
-    <a href="#">首頁</a>
-    <a href="#">服務項目</a>
-    <a href="#">關於我們</a>
-    <a href="#">聯絡我們</a>
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於我們</a>
+    <a href="service.html">服務項目</a>
+    <a href="contact.html">聯絡我們</a>
   </nav>
 </header>
 
@@ -320,7 +325,6 @@
   <p>我們提供專業且高效的物流服務，確保您的貨物準時且安全到達目的地。我們擁有多年的經驗和先進的運輸系統，讓您無後顧之憂。</p>
 
   <div class="service-list">
-
     <a href="index.html" class="service-link">
       <div class="service-item">
         <div class="service-item-header">
@@ -404,18 +408,19 @@ const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 const slider = document.querySelector('.slider');
 let current = 0;
+let interval;
 
-function showSlide(index) {
+function showSlide(index){
   slides.forEach(slide => slide.classList.remove('active'));
   slides[index].classList.add('active');
 }
 
-function nextSlide() {
+function nextSlide(){
   current = (current + 1) % slides.length;
   showSlide(current);
 }
 
-function prevSlideFunc() {
+function prevSlideFunc(){
   current = (current - 1 + slides.length) % slides.length;
   showSlide(current);
 }
@@ -423,49 +428,30 @@ function prevSlideFunc() {
 next.addEventListener('click', nextSlide);
 prev.addEventListener('click', prevSlideFunc);
 
-let interval = setInterval(nextSlide, 4000);
+/* 自動播放淡入淡出 */
+function startAutoSlide(){ interval = setInterval(nextSlide, 4000); }
+function stopAutoSlide(){ clearInterval(interval); }
+startAutoSlide();
 
-slider.addEventListener('mouseenter', () => {
-  clearInterval(interval);
-});
-
-slider.addEventListener('mouseleave', () => {
-  interval = setInterval(nextSlide, 4000);
-});
+slider.addEventListener('mouseenter', stopAutoSlide);
+slider.addEventListener('mouseleave', startAutoSlide);
 
 /* 手機3D觸控效果 */
-
 const serviceLinks = document.querySelectorAll('.service-link');
-
 serviceLinks.forEach(link => {
-
   const card = link.querySelector('.service-item');
-
-  link.addEventListener('touchmove', (e) => {
-
+  link.addEventListener('touchmove', e => {
     const touch = e.touches[0];
     const rect = card.getBoundingClientRect();
-
     const x = touch.clientX - rect.left;
     const y = touch.clientY - rect.top;
-
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-
     const rotateX = -(y - centerY) / 20;
     const rotateY = (x - centerX) / 20;
-
-    card.style.transform =
-      `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-
+    card.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
   });
-
-  link.addEventListener('touchend', () => {
-
-    card.style.transform = "";
-
-  });
-
+  link.addEventListener('touchend', () => { card.style.transform = ""; });
 });
 </script>
 

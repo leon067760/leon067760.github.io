@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>聯絡我們 - 獅諾物流</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* 全域樣式 */
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background-color: #f1f8fd;
+      color: #333;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 40px;
+      background-color: #0D1B2A;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+    }
+
+    .nav-bar {
+      display: flex;
+      gap: 30px;
+    }
+
+    .nav-bar a {
+      text-decoration: none;
+      color: #ffffff;
+      font-size: 18px;
+      transition: color 0.3s;
+    }
+
+    .nav-bar a:hover {
+      color: #C9A227;
+    }
+
+    /* 主內容區 */
+    .main-content {
+      text-align: center;
+      padding: 50px 20px;
+      background-color: #fff;
+      margin: 40px auto;
+      max-width: 1200px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .main-content h1 {
+      font-size: 36px;
+      color: #0D1B2A;
+      margin-bottom: 30px;
+    }
+
+    .main-content h2 {
+      font-size: 28px;
+      color: #0D1B2A;
+      margin-top: 40px;
+      margin-bottom: 20px;
+    }
+
+    .main-content p {
+      font-size: 18px;
+      color: #666;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    /* 聯絡表單 */
+    form {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    form label {
+      display: block;
+      font-weight: 600;
+      margin-top: 15px;
+      margin-bottom: 5px;
+    }
+
+    form input, form textarea {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      box-sizing: border-box;
+    }
+
+    form textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    form button {
+      margin-top: 20px;
+      padding: 12px 30px;
+      font-size: 18px;
+      background-color: #C9A227;
+      color: #0D1B2A;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #a1821b;
+    }
+
+    /* Footer 與首頁一致 */
+    .contact-section {
+      background-color: #0D1B2A;
+      color: #ffffff;
+      padding: 50px 60px 50px 20px;
+      text-align: right;
+    }
+
+    .contact-section a {
+      font-size: 20px;
+      color: #C9A227;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-section span {
+      font-size: 20px;
+    }
+
+    .line-contact {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .header {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .nav-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .contact-section {
+        text-align: center;
+        padding: 40px 20px;
+      }
+      .line-contact {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .main-content h1 {
+        font-size: 28px;
+      }
+      .main-content h2 {
+        font-size: 22px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="brand">
+    <a href="index.html">
+      <img src="logo.webp" alt="獅諾物流 LOGO" class="logo">
+    </a>
+  </div>
+  <nav class="nav-bar">
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於我們</a>
+    <a href="service.html">服務項目</a>
+    <a href="contact.html">聯絡我們</a>
+  </nav>
+</header>
+
+<section class="main-content">
+  <h1>聯絡我們</h1>
+  <p>若您有任何問題或需求，歡迎透過以下方式聯絡我們，我們將盡快回覆。</p>
+
+  <h2>聯絡資訊</h2>
+  <p>地址：238 新北市樹林區佳園路三段103-1號</p>
+  <p>電話：<span>(02)8295-5511</span> | 傳真：<span>(02)8295-1166</span></p>
+  <p>官方 Line：<a href="https://lin.ee/I6mCQkT" target="_blank">點擊詢問</a></p>
+
+  <h2>線上聯絡表單</h2>
+  <form action="#" method="post">
+    <label for="name">姓名</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">電子郵件</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">電話</label>
+    <input type="tel" id="phone" name="phone">
+
+    <label for="message">訊息內容</label>
+    <textarea id="message" name="message" required></textarea>
+
+    <button type="submit">送出訊息</button>
+  </form>
+</section>
+
+<section class="contact-section">
+  <p>238 新北市樹林區佳園路三段103-1號</p>
+  <p>電話: <span>(02)8295-5511</span></p>
+  <p>傳真: <span>(02)8295-1166</span></p>
+
+  <div class="line-contact">
+    <p>官方Line: <a href="https://lin.ee/I6mCQkT" target="_blank">點擊詢問</a></p>
+    <img src="LineLionMoving.webp" style="max-width:100px;">
+  </div>
+
+  <br>
+  <p>© 2026 獅諾物流 版權所有</p>
+</section>
+
+</body>
+</html>

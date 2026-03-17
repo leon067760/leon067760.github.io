@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>服務項目 - 獅諾物流</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  background-color: #f1f8fd;
+  color: #333;
+  scroll-behavior: smooth;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+  background-color: #0D1B2A;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.brand { display: flex; align-items: center; }
+.logo { width: 100%; max-width: 300px; height: auto; margin-right: 10px; }
+.brand-name { font-size: 36px; font-weight: 900; color: #C9A227; letter-spacing: 2px; }
+
+.nav-bar { display: flex; gap: 30px; }
+.nav-bar a { text-decoration: none; color: #fff; font-size: 16px; transition: color 0.3s; }
+.nav-bar a:hover { color: #C9A227; }
+
+.quick-nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 0;
+  background-color: #e5f0fa;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 70px;
+  z-index: 90;
+}
+.quick-nav a {
+  text-decoration: none;
+  padding: 6px 12px;
+  background-color: #0D1B2A;
+  color: #C9A227;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: 0.3s;
+}
+.quick-nav a:hover { background-color: #C9A227; color: #0D1B2A; }
+
+.main-content { max-width: 1200px; margin: 0 auto; padding: 20px; }
+
+.service-section {
+  background-color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease;
+}
+
+/* 上層: 小圖片 + 標題說明 */
+.service-top {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.service-image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.service-image {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  border-radius: 12px;
+  border: 2px solid #C9A227;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-bottom: 30px; /* ← 固定圖片下方空白 */
+}
+
+.service-text {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.service-text h2 {
+  margin: 0;
+  font-size: 20px;
+  color: #0D1B2A;
+  text-align: left;
+}
+
+.service-text p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #555;
+  text-align: left;
+}
+
+/* 照片/影片區 */
+.media-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.media-row a {
+  display: block;
+  width: calc(20% - 10px);
+  aspect-ratio: 16/9;
+  background-color: #ddd;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+}
+.media-row a:hover { background-color: #ccc; }
+
+.contact-section {
+  background-color: #0D1B2A;
+  color: #fff;
+  padding: 50px 60px 50px 20px;
+  text-align: right;
+}
+.contact-section a { color: #C9A227; font-weight: 600; text-decoration: none; }
+.line-contact { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
+
+@media (max-width:768px) {
+  .service-top { flex-direction: column; align-items: flex-start; }
+  .service-text { text-align: left; }
+  .media-row a { width: 48%; }
+  .contact-section { text-align: center; }
+  .line-contact { justify-content: center; }
+}
+
+/* 滑動淡入效果 */
+.service-section.visible { opacity:1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="brand">
+    <a href="index.html"><img src="logo.webp" alt="獅諾物流 LOGO" class="logo"></a>
+    <span class="brand-name"></span>
+  </div>
+  <nav class="nav-bar">
+    <a href="index.html">首頁</a>
+    <a href="about.html">關於我們</a>
+    <a href="service.html">服務項目</a>
+    <a href="contact.html">聯絡我們</a>
+  </nav>
+</header>
+
+<div class="quick-nav">
+  <a href="#service1">貨物運送</a>
+  <a href="#service2">拆裝貨櫃</a>
+  <a href="#service3">貨物寄存</a>
+  <a href="#service4">個人空間</a>
+  <a href="#service5">家具組裝</a>
+  <a href="#service6">商業空間</a>
+</div>
+
+<section class="main-content">
+
+<div class="service-section" id="service1">
+  <div class="service-top">
+    <div class="service-image-container">
+      <img src="delivery-truck.webp" alt="貨物運送" class="service-image">
+    </div>
+    <div class="service-text">
+      <h2>貨物運送</h2>
+      <p>提供安全快速的物流配送服務，確保貨物準時送達。</p>
+    </div>
+  </div>
+  <div class="media-row">
+    <a href="#">照片/影片1</a>
+    <a href="#">照片/影片2</a>
+    <a href="#">照片/影片3</a>
+    <a href="#">照片/影片4</a>
+    <a href="#">照片/影片5</a>
+  </div>
+</div>
+
+<div class="service-section" id="service2">
+  <div class="service-top">
+    <div class="service-image-container">
+      <img src="car.webp" alt="拆裝貨櫃" class="service-image">
+    </div>
+    <div class="service-text">
+      <h2>拆裝貨櫃</h2>
+      <p>專業團隊協助貨櫃裝卸與貨物整理。</p>
+    </div>
+  </div>
+  <div class="media-row">
+    <a href="#">照片/影片1</a>
+    <a href="#">照片/影片2</a>
+    <a href="#">照片/影片3</a>
+    <a href="#">照片/影片4</a>
+    <a href="#">照片/影片5</a>
+  </div>
+</div>
+
+<div class="service-section" id="service3">
+  <div class="service-top">
+    <div class="service-image-container">
+      <img src="warehouse.webp" alt="貨物寄存" class="service-image">
+    </div>
+    <div class="service-text">
+      <h2>貨物寄存</h2>
+      <p>提供安全可靠的倉儲空間，滿足各種存放需求。</p>
+    </div>
+  </div>
+  <div class="media-row">
+    <a href="#">照片/影片1</a>
+    <a href="#">照片/影片2</a>
+    <a href="#">照片/影片3</a>
+    <a href="#">照片/影片4</a>
+    <a href="#">照片/影片5</a>
+  </div>
+</div>
+
+<div class="service-section" id="service4">
+  <div class="service-top">
+    <div class="service-image-container">
+      <img src="product.webp" alt="個人空間" class="service-image">
+    </div>
+    <div class="service-text">
+      <h2>個人空間</h2>
+      <p>彈性個人倉儲空間，讓物品收納更方便。</p>
+    </div>
+  </div>
+  <div class="media-row">
+    <a href="#">照片/影片1</a>
+    <a href="#">照片/影片2</a>
+    <a href="#">照片/影片3</a>
+    <a href="#">照片/影片4</a>
+    <a href="#">照片/影片5</a>
+  </div>
+</div>
+
+<div class="service-section" id="service5">
+  <div class="service-top">
+    <div class="service-image-container">
+      <img src="cupboard.webp" alt="家具組裝" class="service-image">
+    </div>
+    <div class="service-text">
+      <h2>家具組裝</h2>
+      <p>提供家具拆裝與組裝服務，讓搬運更輕鬆。</p>
+    </div>
+  </div>
+  <div class="media-row">
+    <a href="#">照片/影片1</a>
+    <a href="#">照片/影片2</a>
+    <a href="#">照片/影片3</a>
+    <a href="#">照片/影片4</a>
+    <a href="#">照片/影片5</a>
+  </div>
+</div>
+
+<div class="service-section" id="service6">
+  <div class="service-top">
+    <div class="service-image-container">
+      <img src="mall.webp" alt="商業空間" class="service-image">
+    </div>
+    <div class="service-text">
+      <h2>商業空間</h2>
+      <p>提供家具拆裝與組裝服務，讓搬運更輕鬆。</p>
+    </div>
+  </div>
+  <div class="media-row">
+    <a href="#">照片/影片1</a>
+    <a href="#">照片/影片2</a>
+    <a href="#">照片/影片3</a>
+    <a href="#">照片/影片4</a>
+    <a href="#">照片/影片5</a>
+  </div>
+</div>
+
+</section>
+
+<section class="contact-section">
+  <p>238 新北市樹林區佳園路三段103-1號</p>
+  <p>電話: <span>(02)8295-5511</span></p>
+  <p>傳真: <span>(02)8295-1166</span></p>
+  <div class="line-contact">
+    <p>官方Line: <a href="https://lin.ee/I6mCQkT" target="_blank">點擊詢問</a></p>
+    <img src="LineLionMoving.webp" style="max-width:100px;">
+  </div>
+  <br>
+  <p>© 2026 獅諾物流 版權所有</p>
+</section>
+
+<script>
+// 滑動淡入效果
+const sections = document.querySelectorAll('.service-section');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+  });
+},{ threshold: 0.2 });
+sections.forEach(sec => observer.observe(sec));
+</script>
+
+</body>
+</html>
