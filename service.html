@@ -16,6 +16,23 @@ body {
   scroll-behavior: smooth;
 }
 
+/* ✅ 新增 Lightbox */
+#lightbox {
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.8);
+  justify-content:center;
+  align-items:center;
+  z-index:999;
+}
+#lightbox img {
+  max-width:90%;
+  max-height:90%;
+  border-radius:10px;
+}
+
 .header {
   display: flex;
   justify-content: space-between;
@@ -71,7 +88,6 @@ body {
   transition: all 0.8s ease;
 }
 
-/* 上層: 小圖片 + 標題說明 */
 .service-top {
   display: flex;
   gap: 20px;
@@ -91,7 +107,7 @@ body {
   border-radius: 12px;
   border: 2px solid #C9A227;
   box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  margin-bottom: 30px; /* ← 固定圖片下方空白 */
+  margin-bottom: 30px;
 }
 
 .service-text {
@@ -116,28 +132,31 @@ body {
   text-align: left;
 }
 
-/* 照片/影片區 */
 .media-row {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 20px;
 }
-.media-row a {
-  display: block;
+
+.media-item {
   width: calc(20% - 10px);
-  aspect-ratio: 16/9;
-  background-color: #ddd;
+  aspect-ratio: 9/16;
   border-radius: 8px;
-  text-decoration: none;
-  color: #333;
+  overflow: hidden;
+  background-color: #ddd;
   display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 14px;
-  font-weight: bold;
+  align-items: center;
 }
-.media-row a:hover { background-color: #ccc; }
+
+.media-item img, 
+.media-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
 
 .contact-section {
   background-color: #0D1B2A;
@@ -151,16 +170,20 @@ body {
 @media (max-width:768px) {
   .service-top { flex-direction: column; align-items: flex-start; }
   .service-text { text-align: left; }
-  .media-row a { width: 48%; }
+  .media-item { width: 48%; }
   .contact-section { text-align: center; }
   .line-contact { justify-content: center; }
 }
 
-/* 滑動淡入效果 */
 .service-section.visible { opacity:1; transform: translateY(0); }
 </style>
 </head>
 <body>
+
+<!-- ✅ Lightbox -->
+<div id="lightbox">
+  <img id="lightbox-img">
+</div>
 
 <header class="header">
   <div class="brand">
@@ -176,20 +199,20 @@ body {
 </header>
 
 <div class="quick-nav">
-  <a href="#service1">貨物運送</a>
-  <a href="#service2">拆裝貨櫃</a>
-  <a href="#service3">貨物寄存</a>
-  <a href="#service4">個人空間</a>
-  <a href="#service5">家具組裝</a>
-  <a href="#service6">商業空間</a>
+  <a href="#service-DLV">貨物運送</a>
+  <a href="#service-DPP">拆箱定位</a>
+  <a href="#service-CNB">拆裝貨櫃</a>
+  <a href="#service-STO">貨物寄存</a>
+  <a href="#service-ASM">家具組裝</a>
+  <a href="#service-CSP">商業空間</a>
 </div>
 
 <section class="main-content">
 
-<div class="service-section" id="service1">
+<div class="service-section" id="service-DLV">
   <div class="service-top">
     <div class="service-image-container">
-      <img src="delivery-truck.webp" alt="貨物運送" class="service-image">
+      <img src="service-DLV.webp" alt="貨物運送" class="service-image">
     </div>
     <div class="service-text">
       <h2>貨物運送</h2>
@@ -197,18 +220,37 @@ body {
     </div>
   </div>
   <div class="media-row">
-    <a href="#">照片/影片1</a>
-    <a href="#">照片/影片2</a>
-    <a href="#">照片/影片3</a>
-    <a href="#">照片/影片4</a>
-    <a href="#">照片/影片5</a>
+    <div class="media-item" data-src="service-DLV-1.mov"></div>
+    <div class="media-item" data-src="service-DLV-2.webp"></div>
+    <div class="media-item" data-src="service-DLV-3.mp4"></div>
+    <div class="media-item" data-src="service-DLV-4.webp"></div>
+    <div class="media-item" data-src="service-DLV-5.webp"></div>
   </div>
 </div>
 
-<div class="service-section" id="service2">
+<div class="service-section" id="service-DPP">
   <div class="service-top">
     <div class="service-image-container">
-      <img src="car.webp" alt="拆裝貨櫃" class="service-image">
+      <img src="service-DPP.webp" alt="拆箱定位" class="service-image">
+    </div>
+    <div class="service-text">
+      <h2>拆箱定位</h2>
+      <p>提供安全快速的物流配送服務，確保貨物準時送達。</p>
+    </div>
+  </div>
+  <div class="media-row">
+    <div class="media-item" data-src="service-DPP-1.mp4"></div>
+    <div class="media-item" data-src="service-DPP-2.webp"></div>
+    <div class="media-item" data-src="service-DPP-3.webp"></div>
+    <div class="media-item" data-src="service-DPP-4.webp"></div>
+    <div class="media-item" data-src="service-DPP-5.webp"></div>
+  </div>
+</div>
+
+<div class="service-section" id="service-CNB">
+  <div class="service-top">
+    <div class="service-image-container">
+      <img src="service-CNB.webp" alt="拆裝貨櫃" class="service-image">
     </div>
     <div class="service-text">
       <h2>拆裝貨櫃</h2>
@@ -216,18 +258,18 @@ body {
     </div>
   </div>
   <div class="media-row">
-    <a href="#">照片/影片1</a>
-    <a href="#">照片/影片2</a>
-    <a href="#">照片/影片3</a>
-    <a href="#">照片/影片4</a>
-    <a href="#">照片/影片5</a>
+    <div class="media-item" data-src="service-CNB-1.webp"></div>
+    <div class="media-item" data-src="service-CNB-2.webp"></div>
+    <div class="media-item" data-src="service-CNB-3.webp"></div>
+    <div class="media-item" data-src="service-CNB-4.webp"></div>
+    <div class="media-item" data-src="service-CNB-5.webp"></div>
   </div>
 </div>
 
-<div class="service-section" id="service3">
+<div class="service-section" id="service-STO">
   <div class="service-top">
     <div class="service-image-container">
-      <img src="warehouse.webp" alt="貨物寄存" class="service-image">
+      <img src="service-STO.webp" alt="貨物寄存" class="service-image">
     </div>
     <div class="service-text">
       <h2>貨物寄存</h2>
@@ -235,37 +277,18 @@ body {
     </div>
   </div>
   <div class="media-row">
-    <a href="#">照片/影片1</a>
-    <a href="#">照片/影片2</a>
-    <a href="#">照片/影片3</a>
-    <a href="#">照片/影片4</a>
-    <a href="#">照片/影片5</a>
+    <div class="media-item" data-src="service-STO-1.webp"></div>
+    <div class="media-item" data-src="service-STO-2.webp"></div>
+    <div class="media-item" data-src="service-STO-3.webp"></div>
+    <div class="media-item" data-src="service-STO-4.webp"></div>
+    <div class="media-item" data-src="service-STO-5.webp"></div>
   </div>
 </div>
 
-<div class="service-section" id="service4">
+<div class="service-section" id="service-ASM">
   <div class="service-top">
     <div class="service-image-container">
-      <img src="product.webp" alt="個人空間" class="service-image">
-    </div>
-    <div class="service-text">
-      <h2>個人空間</h2>
-      <p>彈性個人倉儲空間，讓物品收納更方便。</p>
-    </div>
-  </div>
-  <div class="media-row">
-    <a href="#">照片/影片1</a>
-    <a href="#">照片/影片2</a>
-    <a href="#">照片/影片3</a>
-    <a href="#">照片/影片4</a>
-    <a href="#">照片/影片5</a>
-  </div>
-</div>
-
-<div class="service-section" id="service5">
-  <div class="service-top">
-    <div class="service-image-container">
-      <img src="cupboard.webp" alt="家具組裝" class="service-image">
+      <img src="service-ASM.webp" alt="家具組裝" class="service-image">
     </div>
     <div class="service-text">
       <h2>家具組裝</h2>
@@ -273,18 +296,18 @@ body {
     </div>
   </div>
   <div class="media-row">
-    <a href="#">照片/影片1</a>
-    <a href="#">照片/影片2</a>
-    <a href="#">照片/影片3</a>
-    <a href="#">照片/影片4</a>
-    <a href="#">照片/影片5</a>
+    <div class="media-item" data-src="service-ASM-1.webp"></div>
+    <div class="media-item" data-src="service-ASM-2.webp"></div>
+    <div class="media-item" data-src="service-ASM-3.webp"></div>
+    <div class="media-item" data-src="service-ASM-4.webp"></div>
+    <div class="media-item" data-src="service-ASM-5.webp"></div>
   </div>
 </div>
 
-<div class="service-section" id="service6">
+<div class="service-section" id="service-CSP">
   <div class="service-top">
     <div class="service-image-container">
-      <img src="mall.webp" alt="商業空間" class="service-image">
+      <img src="service-CSP.webp" alt="商業空間" class="service-image">
     </div>
     <div class="service-text">
       <h2>商業空間</h2>
@@ -292,11 +315,11 @@ body {
     </div>
   </div>
   <div class="media-row">
-    <a href="#">照片/影片1</a>
-    <a href="#">照片/影片2</a>
-    <a href="#">照片/影片3</a>
-    <a href="#">照片/影片4</a>
-    <a href="#">照片/影片5</a>
+    <div class="media-item" data-src="service-CSP-1.webp"></div>
+    <div class="media-item" data-src="service-CSP-2.webp"></div>
+    <div class="media-item" data-src="service-CSP-3.webp"></div>
+    <div class="media-item" data-src="service-CSP-4.webp"></div>
+    <div class="media-item" data-src="service-CSP-5.webp"></div>
   </div>
 </div>
 
@@ -315,7 +338,6 @@ body {
 </section>
 
 <script>
-// 滑動淡入效果
 const sections = document.querySelectorAll('.service-section');
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -323,6 +345,48 @@ const observer = new IntersectionObserver(entries => {
   });
 },{ threshold: 0.2 });
 sections.forEach(sec => observer.observe(sec));
+
+const lightbox = document.getElementById('lightbox');
+const lightboxImg = document.getElementById('lightbox-img');
+
+lightbox.addEventListener('click', () => {
+  lightbox.style.display = 'none';
+});
+
+document.querySelectorAll('.media-item').forEach(item => {
+  const src = item.dataset.src;
+  if(!src) return;
+
+  const ext = src.split('.').pop().toLowerCase();
+
+  if(ext === 'mp4' || ext === 'mov' || ext === 'webm') {
+    const video = document.createElement('video');
+    video.src = src;
+    video.controls = true;
+    video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.style.cursor = 'pointer';
+
+    item.addEventListener('mouseenter', () => video.play());
+    item.addEventListener('mouseleave', () => video.pause());
+    item.addEventListener('touchstart', () => video.play());
+    item.addEventListener('touchend', () => video.pause());
+
+    item.appendChild(video);
+  } else {
+    const img = document.createElement('img');
+    img.src = src;
+    img.style.cursor = 'pointer';
+
+    img.addEventListener('click', () => {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = src;
+    });
+
+    item.appendChild(img);
+  }
+});
 </script>
 
 </body>
