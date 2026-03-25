@@ -151,7 +151,8 @@ body {
 }
 
 .media-item img, 
-.media-item video {
+.media-item video, 
+.media-item iframe {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -220,11 +221,13 @@ body {
     </div>
   </div>
   <div class="media-row">
-    <div class="media-item" data-src="service-DLV-1.mov"></div>
+    <div class="media-item" data-src="service-DLV-1.mp4"></div>
     <div class="media-item" data-src="service-DLV-2.webp"></div>
     <div class="media-item" data-src="service-DLV-3.mp4"></div>
     <div class="media-item" data-src="service-DLV-4.webp"></div>
+    <!--
     <div class="media-item" data-src="service-DLV-5.webp"></div>
+    -->
   </div>
 </div>
 
@@ -239,11 +242,13 @@ body {
     </div>
   </div>
   <div class="media-row">
-    <div class="media-item" data-src="service-DPP-1.mp4"></div>
+    <div class="media-item" data-src="https://youtu.be/d1zRwh7NdvA"></div>
     <div class="media-item" data-src="service-DPP-2.webp"></div>
+    <!--
     <div class="media-item" data-src="service-DPP-3.webp"></div>
     <div class="media-item" data-src="service-DPP-4.webp"></div>
     <div class="media-item" data-src="service-DPP-5.webp"></div>
+    -->
   </div>
 </div>
 
@@ -258,11 +263,13 @@ body {
     </div>
   </div>
   <div class="media-row">
-    <div class="media-item" data-src="service-CNB-1.webp"></div>
+    <div class="media-item" data-src="service-CNB-1.mp4"></div>
+    <!--
     <div class="media-item" data-src="service-CNB-2.webp"></div>
     <div class="media-item" data-src="service-CNB-3.webp"></div>
     <div class="media-item" data-src="service-CNB-4.webp"></div>
     <div class="media-item" data-src="service-CNB-5.webp"></div>
+    -->
   </div>
 </div>
 
@@ -337,6 +344,7 @@ body {
   <p>© 2026 獅諾物流 版權所有</p>
 </section>
 
+<script src="https://www.youtube.com/iframe_api"></script>
 <script>
 const sections = document.querySelectorAll('.service-section');
 const observer = new IntersectionObserver(entries => {
@@ -353,13 +361,38 @@ lightbox.addEventListener('click', () => {
   lightbox.style.display = 'none';
 });
 
+const youtubePlayers = {};
+const youtubeQueue = [];
+
+// ✅ 更穩定的 YouTube ID 抓取（避免 153）
+function getYouTubeID(url) {
+  const regex = /(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w-]{11})/;
+  const match = url.match(regex);
+  return match ? match[1] : null;
+}
+
+// 初始化媒體
 document.querySelectorAll('.media-item').forEach(item => {
   const src = item.dataset.src;
   if(!src) return;
 
   const ext = src.split('.').pop().toLowerCase();
+  const videoId = getYouTubeID(src);
 
-  if(ext === 'mp4' || ext === 'mov' || ext === 'webm') {
+  // ✅ YouTube
+  if(videoId) {
+    const div = document.createElement('div');
+    div.id = 'youtube-' + Math.random().toString(36).substr(2,5);
+    item.appendChild(div);
+
+    youtubeQueue.push({
+      divId: div.id,
+      videoId: videoId,
+      item: item
+    });
+
+  // ✅ MP4
+  } else if(ext === 'mp4' || ext === 'mov' || ext === 'webm') {
     const video = document.createElement('video');
     video.src = src;
     video.controls = true;
@@ -368,25 +401,62 @@ document.querySelectorAll('.media-item').forEach(item => {
     video.playsInline = true;
     video.style.cursor = 'pointer';
 
+    item.appendChild(video);
+
     item.addEventListener('mouseenter', () => video.play());
     item.addEventListener('mouseleave', () => video.pause());
     item.addEventListener('touchstart', () => video.play());
     item.addEventListener('touchend', () => video.pause());
 
-    item.appendChild(video);
+  // ✅ 圖片
   } else {
     const img = document.createElement('img');
     img.src = src;
     img.style.cursor = 'pointer';
 
+    item.appendChild(img);
+
     img.addEventListener('click', () => {
       lightbox.style.display = 'flex';
       lightboxImg.src = src;
     });
-
-    item.appendChild(img);
   }
 });
+
+// ✅ API 載入完成後初始化（關鍵）
+function onYouTubeIframeAPIReady() {
+  youtubeQueue.forEach(obj => {
+    const player = new YT.Player(obj.divId, {
+      videoId: obj.videoId,
+      playerVars: {
+        autoplay: 0,
+        controls: 1,
+        mute: 1
+        // ⚠️ 先不要加 loop，避免錯誤
+      }
+    });
+
+    youtubePlayers[obj.divId] = player;
+
+    const item = obj.item;
+
+    item.addEventListener('mouseenter', () => {
+      try { player.playVideo(); } catch(e){}
+    });
+
+    item.addEventListener('mouseleave', () => {
+      try { player.pauseVideo(); } catch(e){}
+    });
+
+    item.addEventListener('touchstart', () => {
+      try { player.playVideo(); } catch(e){}
+    });
+
+    item.addEventListener('touchend', () => {
+      try { player.pauseVideo(); } catch(e){}
+    });
+  });
+}
 </script>
 
 </body>
