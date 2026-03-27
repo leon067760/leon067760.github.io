@@ -175,15 +175,17 @@ body {
   /* 會透過 media query 設定 span */
 }
 
-/* 電腦版：每列 5 單位 */
+/* 電腦版：每列 4 單位 */
 @media (min-width: 769px) {
   .media-row {
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 
+  <!--
   .media-row {
-    height: calc((100vw - 120px - 40px) / 5 * 16 / 9);
+    height: calc((100vw - 120px - 40px) / 4 * 16 / 9);
   }
+  -->
 }
 
 /* 手機版：每列 2 單位 */
@@ -192,9 +194,11 @@ body {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  <!--
   .media-row {
     height: calc((100vw - 40px - 10px) / 2 * 16 / 9);
   }
+  -->
 }
 
 .contact-section {
