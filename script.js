@@ -1,4 +1,6 @@
+/*
 <script>
+*/
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -9,12 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
   let current = 0;
   let interval;
 
-  if(slides.length > 0){
+    showSlide(current);
+
     function showSlide(index){
       slides.forEach(slide => slide.classList.remove('active'));
       slides[index].classList.add('active');
     }
-  }
 
   function nextSlide(){
     current = (current + 1) % slides.length;
@@ -58,11 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
       lightbox.style.display = 'none';
     });
 
+    // 點擊圖片本身不關閉 lightbox
     lightboxImg.addEventListener('click', e => e.stopPropagation());
   }
-
-  // 點擊圖片本身不關閉 lightbox
-  lightboxImg.addEventListener('click', e => e.stopPropagation());
 
   /* 動態生成 media-item 內容 */
   document.querySelectorAll('.media-item').forEach(item => {
@@ -132,5 +132,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 });
-
+/*
 </script>
+*/
