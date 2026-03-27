@@ -7,298 +7,21 @@
 
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Noto Sans TC', sans-serif;
-      background-color: #f1f8fd;
-      color: #333;
-    }
-
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 10px 40px;
-      background-color: #0D1B2A;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo {
-      width: 100%;
-      max-width: 360px;
-      height: auto;
-      margin-right: 10px;
-    }
-
-    .brand-name {
-      font-size: 40px;
-      font-weight: 900;
-      color: #C9A227;
-      letter-spacing: 2px;
-      text-shadow: 
-        2px 2px 2px rgba(0,0,0,0.8),
-        4px 4px 4px rgba(0,0,0,0.5);
-    }
-
-    .nav-bar {
-      display: flex;
-      gap: 30px;
-    }
-
-    .nav-bar a {
-      text-decoration: none;
-      color: #ffffff;
-      font-size: 18px;
-      transition: color 0.3s;
-    }
-
-    .nav-bar a:hover {
-      color: #C9A227;
-    }
-
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 500px;
-      overflow: hidden;
-    }
-
-    .slides {
-      position: relative;
-      width: 100%;
-      height: 100%;
-    }
-
-    /* 輪播淡入淡出效果 */
-    .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      z-index: 0;
-    }
-
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
-    }
-
-    .prev, .next {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 60px;
-      height: 80px;
-      background-color: rgba(13,27,42,0.85);
-      color: #ffffff;
-      border: none;
-      font-size: 30px;
-      cursor: pointer;
-      z-index: 10;
-      transition: all 0.3s;
-    }
-
-    .prev {
-      left: 0;
-    }
-
-    .next {
-      right: 0;
-    }
-
-    .prev:hover, .next:hover {
-      background-color: #C9A227;
-      color: #0D1B2A;
-    }
-
-    .main-content {
-      text-align: center;
-      padding: 50px 20px;
-      background-color: #fff;
-      margin: 40px auto;
-      max-width: 1200px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    .main-content p {
-      font-size: 18px;
-      color: #666;
-      line-height: 1.6;
-      margin-top: 20px;
-    }
-
-    .service-list {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-top: 50px;
-      gap: 30px;
-      perspective: 1000px;
-    }
-
-    .service-link {
-      width: 70%;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .service-item {
-      text-align: center;
-      background-color: #f2f2f2;
-      padding: 30px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: transform 0.4s ease, box-shadow 0.4s ease, border 0.4s ease;
-      position: relative;
-      overflow: hidden;
-      border: 2px solid transparent;
-
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .service-link:hover .service-item {
-      transform: translateY(-10px) rotateX(3deg) rotateY(3deg);
-      box-shadow: 0 16px 28px rgba(0,0,0,0.2);
-      border: 2px solid #C9A227;
-    }
-
-    .service-item-header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 15px;
-    }
-
-    .service-item img {
-      max-width: 80px;
-      height: auto;
-      transition: transform 0.4s ease;
-    }
-
-    .service-link:hover img {
-      transform: scale(1.2) rotate(10deg);
-    }
-
-    .service-item h3 {
-      font-size: 22px;
-      color: #333;
-      margin: 0;
-      transition: color 0.4s ease;
-    }
-
-    .service-link:hover h3 {
-      color: #C9A227;
-    }
-
-    .service-item::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -120%;
-      width: 50%;
-      height: 100%;
-      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
-      transform: skewX(-25deg);
-      transition: all 0.7s ease;
-    }
-
-    .service-link:hover .service-item::before {
-      left: 120%;
-    }
-
-    .service-item p {
-      font-size: 16px;
-      color: #666;
-      margin: 0;
-      line-height: 1.6;
-    }
-
-    .contact-section {
-      background-color: #0D1B2A;
-      color: #ffffff;
-      padding: 50px 60px 50px 20px;
-      text-align: right;
-    }
-
-    .contact-section a {
-      font-size: 20px;
-      color: #C9A227;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .contact-section span {
-      font-size: 20px;
-    }
-
-    .line-contact {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 10px;
-      margin-top: 10px;
-    }
-
-    @media (max-width: 768px) {
-      .header {
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .nav-bar {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .service-link {
-        width: 85%;
-      }
-
-      .slider {
-        height: 300px;
-      }
-
-      .contact-section {
-        text-align: center;
-        padding: 40px 20px;
-      }
-
-      .line-contact {
-        justify-content: center;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .brand-name {
-        font-size: 26px;
-      }
-
-      .service-item-header {
-        flex-direction: column;
-        gap: 10px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
+<!-- ✅ Lightbox -->
+<div id="lightbox">
+  <img id="lightbox-img">
+</div>
 
 <header class="header">
   <div class="brand">
     <a href="index.html">
       <img src="logo.webp" alt="獅諾物流 LOGO" class="logo">
     </a>
-    <span class="brand-name"></span>
   </div>
 
   <nav class="nav-bar">
@@ -321,9 +44,11 @@
   <button class="next">&#10095;</button>
 </section>
 
-<section class="main-content">
+<section class="pre-main-content">
   <p>我們提供專業且高效的物流服務，確保您的貨物準時且安全到達目的地。我們擁有多年的經驗和先進的運輸系統，讓您無後顧之憂。</p>
+</section>
 
+<section class="main-content">
   <!--
    中文名稱 | 英文縮寫 | 說明
   ---------+---------+------------------------------
@@ -335,67 +60,110 @@
    商業空間 | CSP     | Commercial Space
   -->
 
-  <div class="service-list">
-    <a href="index.html" class="service-link">
-      <div class="service-item">
-        <div class="service-item-header">
-          <img src="service-DLV.webp">
-          <h3>貨物運送</h3>
-        </div>
+  <div class="service-section" id="service-DLV">
+    <div class="service-top">
+      <div class="service-image-container">
+        <img src="service-DLV.webp" alt="貨物運送" class="service-image">
+      </div>
+      <div class="service-text">
+        <h2>貨物運送</h2>
         <p>提供安全快速的物流配送服務，確保貨物準時送達。</p>
       </div>
-    </a>
+    </div>
+    <div class="media-row">
+      <div class="media-item" data-src="service-DLV-1.mp4"></div>
+      <div class="media-item" data-src="service-DLV-2.webp"></div>
+      <div class="media-item" data-src="service-DLV-3.mp4"></div>
+      <div class="media-item" data-src="service-DLV-4.webp"></div>
+    </div>
+  </div>
 
-    <a href="index.html" class="service-link">
-      <div class="service-item">
-        <div class="service-item-header">
-          <img src="service-DPP.webp">
-          <h3>拆箱定位</h3>
-        </div>
+  <div class="service-section" id="service-DPP">
+    <div class="service-top">
+      <div class="service-image-container">
+        <img src="service-DPP.webp" alt="拆箱定位" class="service-image">
+      </div>
+      <div class="service-text">
+        <h2>拆箱定位</h2>
         <p>提供安全快速的物流配送服務，確保貨物準時送達。</p>
       </div>
-    </a>
+    </div>
+    <div class="media-row">
+      <iframe class="media-item media-wide" src="https://www.youtube.com/embed/qjcpychptwY?si=VYCwwKLUA05ogFu7" title="拆箱"></iframe>
+      <div class="media-item" data-src="service-DPP-2.webp"></div>
+    </div>
+  </div>
 
-    <a href="index.html" class="service-link">
-      <div class="service-item">
-        <div class="service-item-header">
-          <img src="service-CNB.webp">
-          <h3>拆裝貨櫃</h3>
-        </div>
+  <div class="service-section" id="service-CNB">
+    <div class="service-top">
+      <div class="service-image-container">
+        <img src="service-CNB.webp" alt="拆裝貨櫃" class="service-image">
+      </div>
+      <div class="service-text">
+        <h2>拆裝貨櫃</h2>
         <p>專業團隊協助貨櫃裝卸與貨物整理。</p>
       </div>
-    </a>
+    </div>
+    <div class="media-row">
+      <iframe class="media-item media-wide" src="https://www.youtube.com/embed/ELRR9728NTU?si=twOtmVk4hv5awv-d" title="拆櫃"></iframe>
+    </div>
+  </div>
 
-    <a href="index.html" class="service-link">
-      <div class="service-item">
-        <div class="service-item-header">
-          <img src="service-STO.webp">
-          <h3>貨物寄存</h3>
-        </div>
+  <div class="service-section" id="service-STO">
+    <div class="service-top">
+      <div class="service-image-container">
+        <img src="service-STO.webp" alt="貨物寄存" class="service-image">
+      </div>
+      <div class="service-text">
+        <h2>貨物寄存</h2>
         <p>提供安全可靠的倉儲空間，滿足各種存放需求。</p>
       </div>
-    </a>
+    </div>
+    <div class="media-row">
+      <div class="media-item" data-src="service-STO-1.webp"></div>
+      <div class="media-item" data-src="service-STO-2.webp"></div>
+      <div class="media-item" data-src="service-STO-3.webp"></div>
+      <div class="media-item" data-src="service-STO-4.webp"></div>
+      <div class="media-item" data-src="service-STO-5.webp"></div>
+    </div>
+  </div>
 
-    <a href="index.html" class="service-link">
-      <div class="service-item">
-        <div class="service-item-header">
-          <img src="service-ASM.webp">
-          <h3>家具組裝</h3>
-        </div>
+  <div class="service-section" id="service-ASM">
+    <div class="service-top">
+      <div class="service-image-container">
+        <img src="service-ASM.webp" alt="家具組裝" class="service-image">
+      </div>
+      <div class="service-text">
+        <h2>家具組裝</h2>
         <p>提供家具拆裝與組裝服務，讓搬運更輕鬆。</p>
       </div>
-    </a>
+    </div>
+    <div class="media-row">
+      <div class="media-item" data-src="service-ASM-1.webp"></div>
+      <div class="media-item" data-src="service-ASM-2.webp"></div>
+      <div class="media-item" data-src="service-ASM-3.webp"></div>
+      <div class="media-item" data-src="service-ASM-4.webp"></div>
+      <div class="media-item" data-src="service-ASM-5.webp"></div>
+    </div>
+  </div>
 
-    <a href="index.html" class="service-link">
-      <div class="service-item">
-        <div class="service-item-header">
-          <img src="service-CSP.webp">
-          <h3>商業空間</h3>
-        </div>
+  <div class="service-section" id="service-CSP">
+    <div class="service-top">
+      <div class="service-image-container">
+        <img src="service-CSP.webp" alt="商業空間" class="service-image">
+      </div>
+      <div class="service-text">
+        <h2>商業空間</h2>
         <p>提供家具拆裝與組裝服務，讓搬運更輕鬆。</p>
       </div>
-    </a>
-
+    </div>
+    <div class="media-row">
+      <div class="media-item" data-src="service-CSP-1.webp"></div>
+      <div class="media-item" data-src="service-CSP-2.webp"></div>
+      <div class="media-item" data-src="service-CSP-3.webp"></div>
+      <div class="media-item" data-src="service-CSP-4.webp"></div>
+      <div class="media-item" data-src="service-CSP-5.webp"></div>
+    </div>
   </div>
 </section>
 
@@ -412,59 +180,6 @@
   <br>
   <p>© 2026 獅諾物流 版權所有</p>
 </section>
-
-<script>
-const slides = document.querySelectorAll('.slide');
-const prev = document.querySelector('.prev');
-const next = document.querySelector('.next');
-const slider = document.querySelector('.slider');
-let current = 0;
-let interval;
-
-function showSlide(index){
-  slides.forEach(slide => slide.classList.remove('active'));
-  slides[index].classList.add('active');
-}
-
-function nextSlide(){
-  current = (current + 1) % slides.length;
-  showSlide(current);
-}
-
-function prevSlideFunc(){
-  current = (current - 1 + slides.length) % slides.length;
-  showSlide(current);
-}
-
-next.addEventListener('click', nextSlide);
-prev.addEventListener('click', prevSlideFunc);
-
-/* 自動播放淡入淡出 */
-function startAutoSlide(){ interval = setInterval(nextSlide, 4000); }
-function stopAutoSlide(){ clearInterval(interval); }
-startAutoSlide();
-
-slider.addEventListener('mouseenter', stopAutoSlide);
-slider.addEventListener('mouseleave', startAutoSlide);
-
-/* 手機3D觸控效果 */
-const serviceLinks = document.querySelectorAll('.service-link');
-serviceLinks.forEach(link => {
-  const card = link.querySelector('.service-item');
-  link.addEventListener('touchmove', e => {
-    const touch = e.touches[0];
-    const rect = card.getBoundingClientRect();
-    const x = touch.clientX - rect.left;
-    const y = touch.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = -(y - centerY) / 20;
-    const rotateY = (x - centerX) / 20;
-    card.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-  });
-  link.addEventListener('touchend', () => { card.style.transform = ""; });
-});
-</script>
 
 </body>
 </html>
