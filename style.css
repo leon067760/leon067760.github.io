@@ -135,18 +135,41 @@
     /* 前置內容區 */
     .pre-main-content {
         text-align: center;
-        padding: 50px 20px;
-        background-color: #fff;
-        margin: 40px auto;
-        max-width: 1200px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        padding: 20px 20px 30px;
+        background: none;     /* ❌ 拿掉白底 */
+        margin: 20px auto;
+        max-width: 900px;
+        box-shadow: none;     /* ❌ 拿掉陰影 */
+    }
+
+    .pre-main-content h1 {
+        font-size: 26px;
+        color: #0D1B2A;
+        margin-bottom: 20px;
+        line-height: 1.8;
+        font-weight: 900;
     }
 
     .pre-main-content p {
-        font-size: 18px;
-        color: #666;
-        line-height: 1.6;
-        margin-top: 20px;
+        font-size: 22px;      /* 🔥 放大 */
+        color: #0D1B2A;       /* 深色更穩重 */
+        line-height: 1.0;
+        font-weight: 500;
+    }
+
+    .highlight {
+        color: #C9A227;
+        font-weight: 700;
+    }
+
+    .pre-main-content::after {
+        content: "";
+        display: block;
+        width: 300px;
+        height: 4px;
+        background: #C9A227;
+        margin: 20px auto 0;
+        border-radius: 2px;
     }
 
     /* 主要內容區 */
@@ -163,9 +186,13 @@
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         margin-bottom: 20px;
-        opacity: 0;
-        transform: translateY(50px);
-        transition: all 0.8s ease;
+        /* 取消「初始隱藏 + 動畫」 */
+        /* opacity: 0; */
+        /* transform: translateY(50px); */
+        /* transition: all 0.8s ease; */
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 
     .service-section.visible {
