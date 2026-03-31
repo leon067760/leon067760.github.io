@@ -39,6 +39,16 @@
             slider.addEventListener('mouseleave', startAutoSlide);
         }
 
+        // 漢堡選單切換
+        const hamburger = document.querySelector('.hamburger');
+        const navBar = document.querySelector('.nav-bar');
+
+        if (hamburger && navBar) {
+            hamburger.addEventListener('click', () => {
+                navBar.classList.toggle('show'); // 切換 .show
+            });
+        }
+
         /* IntersectionObserver 動畫效果 */
         const sections = document.querySelectorAll('.service-section');
         const observer = new IntersectionObserver(entries => {
