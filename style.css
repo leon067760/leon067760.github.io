@@ -12,13 +12,13 @@
 
     /* header 與導覽列 */
     .header {
-        display: flex;
+        flex-direction: row;   /* ❗ 改回橫向 */
         justify-content: space-between;
         align-items: center;
         padding: 10px 40px;
         background-color: #0D1B2A;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        position: sticky;
+        position: relative;
         top: 0;
         z-index: 100;
     }
