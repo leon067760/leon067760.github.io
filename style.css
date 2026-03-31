@@ -2,13 +2,6 @@
 <style>
 */
 
-    /* 全域 box-sizing，避免 padding/邊框造成寬度爆掉 */
-    *,
-    *::before,
-    *::after {
-        box-sizing: border-box;
-    }
-
     /* 全域設定 */
     body {
         margin: 0;
