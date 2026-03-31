@@ -51,14 +51,6 @@
         color: #C9A227;
     }
 
-    /* 漢堡按鈕（預設桌機隱藏） */
-    .hamburger {
-        display: none;
-        font-size: 28px;
-        color: #fff;
-        cursor: pointer;
-    }
-
     /* 快速導覽列 */
     .quick-nav {
         display: flex;
@@ -159,7 +151,7 @@
     }
 
     .pre-main-content p {
-        font-size: 20px;      /* 🔥 放大 */
+        font-size: 22px;      /* 🔥 放大 */
         color: #0D1B2A;       /* 深色更穩重 */
         line-height: 1.0;
         font-weight: 500;
@@ -194,6 +186,10 @@
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         margin-bottom: 20px;
+        /* 取消「初始隱藏 + 動畫」 */
+        /* opacity: 0; */
+        /* transform: translateY(50px); */
+        /* transition: all 0.8s ease; */
         opacity: 1;
         transform: none;
         transition: none;
@@ -310,46 +306,8 @@
 
     /* 手機版響應式 */
     @media (max-width:768px) {
-        .header { 
-            flex-direction: row;       /* 保持橫排 */
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            position: relative;
-            min-height: 60px; /* 🔥 防止 header 高度被壓縮 */
-        }
-
-        /* 漢堡顯示 */
-        .hamburger {
-            display: block;
-            position: absolute;
-            right: 20px;
-            top: 15px;
-        }
-
-        /* nav-bar 初始隱藏 */
-        .nav-bar { 
-            display: none; 
-            flex-direction: column;
-            width: 100%;
-            background-color: #0D1B2A;
-            text-align: center;
-            position: absolute; /* 🔥 浮在 header 下方 */
-            top: 60px;          /* 🔥 位置緊貼 header */
-            left: 0;
-            z-index: 101;       /* 🔥 高於 header */
-        }
-
-        /* 打開 nav-bar 狀態 */
-        .nav-bar.active {
-            display: flex;
-        }
-
-        .nav-bar a {
-            padding: 12px 0;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
+        .header { flex-direction: column; gap: 10px; }
+        .nav-bar { flex-wrap: wrap; justify-content: center; }
         .slider { height: 300px; }
         .service-top { flex-direction: column; align-items: flex-start; }
         .service-text { text-align: left; }

@@ -173,26 +173,9 @@
         <script>
             // 載入 header
             fetch('header.html')
-                .then(response => response.text())
-                .then(html => {
-                    document.getElementById('header').innerHTML = html;
-
-                    const hamburger = document.getElementById("hamburger");
-                    const navbar = document.getElementById("navbar");
-
-                    // ✅ 漢堡開關
-                    hamburger.addEventListener("click", () => {
-                        navbar.classList.toggle("active");
-                    });
-
-                    // ✅ 點外面關閉
-                    document.addEventListener("click", (e) => {
-                        if (!hamburger.contains(e.target) && !navbar.contains(e.target)) {
-                            navbar.classList.remove("active");
-                        }
-                    });
-                });
-                .catch(err => console.log('載入 header 失敗', err));
+              .then(response => response.text())
+              .then(html => document.getElementById('header').innerHTML = html)
+              .catch(err => console.log('載入 header 失敗', err));
 
             // 載入 footer
             fetch('footer.html')
