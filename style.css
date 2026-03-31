@@ -1,6 +1,14 @@
 /*
 <style>
 */
+
+    /* 全域 box-sizing，避免 padding/邊框造成寬度爆掉 */
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
     /* 全域設定 */
     body {
         margin: 0;
@@ -16,12 +24,13 @@
         justify-content: space-between;
         align-items: center;
         padding: 10px 40px;
+        width: 100%;                    /* ✅ 確保 header 寬度 */
+        box-sizing: border-box;         /* ✅ 包含 padding 在 width 內，避免橫向跑掉 */
         background-color: #0D1B2A;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         position: sticky;
         top: 0;
         z-index: 100;
-width: 100%;
     }
 
     .brand {
@@ -152,7 +161,7 @@ width: 100%;
     }
 
     .pre-main-content p {
-        font-size: 22px;      /* 🔥 放大 */
+        font-size: 20px;      /* 🔥 放大 */
         color: #0D1B2A;       /* 深色更穩重 */
         line-height: 1.0;
         font-weight: 500;
