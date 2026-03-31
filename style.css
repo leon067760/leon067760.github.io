@@ -12,13 +12,13 @@
 
     /* header 與導覽列 */
     .header {
-        flex-direction: row;   /* ❗ 改回橫向 */
+        display: flex;
         justify-content: space-between;
         align-items: center;
         padding: 10px 40px;
         background-color: #0D1B2A;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        position: relative;
+        position: sticky;
         top: 0;
         z-index: 100;
     }
@@ -159,7 +159,7 @@
     }
 
     .pre-main-content p {
-        font-size: 22px;      /* 🔥 放大 */
+        font-size: 20px;      /* 🔥 放大 */
         color: #0D1B2A;       /* 深色更穩重 */
         line-height: 1.0;
         font-weight: 500;
@@ -194,10 +194,6 @@
         border-radius: 12px;
         box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         margin-bottom: 20px;
-        /* 取消「初始隱藏 + 動畫」 */
-        /* opacity: 0; */
-        /* transform: translateY(50px); */
-        /* transition: all 0.8s ease; */
         opacity: 1;
         transform: none;
         transition: none;
@@ -315,9 +311,10 @@
     /* 手機版響應式 */
     @media (max-width:768px) {
         .header { 
-            flex-direction: column; 
-            gap: 10px; 
-            align-items: flex-start;
+            flex-direction: row;       /* 保持橫排 */
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
             position: relative;
         }
 
@@ -329,7 +326,7 @@
             top: 15px;
         }
 
-        /* 🔥 原本 nav-bar 改掉 */
+        /* nav-bar 初始隱藏 */
         .nav-bar { 
             display: none; 
             flex-direction: column;
@@ -338,7 +335,7 @@
             text-align: center;
         }
 
-        /* 🔥 新增：打開狀態 */
+        /* 打開 nav-bar 狀態 */
         .nav-bar.active {
             display: flex;
         }
